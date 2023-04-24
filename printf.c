@@ -2,37 +2,38 @@
 
 /*Red-Rim & Hasu-naj*/
 /**
- * printf - a function that produces output according to a format
+ * _printf - a function that produces output according to a format
  * @format: format
  * Return: printed chars
  */
 int _printf(const char *format, ...)
 {
-	va_list ap;
-	int i = 0, c = 0;
+	va_list args;
+	int c = 0;
 
-	if (!format)
-	{
-		return (-1);
-	}
 
-	va_start(ap, format);
-	while (format[i])
+	va_start(args, format);
+
+	while (*format)
 	{
-		if (format[i] == '%')
+		if (*format == '%')
 		{
-			if (format[i + 1] == '\0')
-			return (-1);
-
-			i++;
-			c += check_format(ap, &format[i]);
+			format++;
+			if (*format == 'c')
+				c += _putchar(va_arg(args, int));
+			else if (*format == 's')
+				c += _putstr(va_arg(args, char *));
+			else if (*format == '%')
+				c += _putchar('%');
+			else
+				return (-1);
 		}
 		else
-		{
-			c += _putchar(format[i]);
-		}
-		i++;
+			c += _putchar(*format);
+		format++;
 	}
-	va_end(ap);
+
+	va_end(args);
+
 	return (c);
 }
