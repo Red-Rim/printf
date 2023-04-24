@@ -21,4 +21,4 @@ int _putchar(char c);
 int check_format(va_list list, const char *s);
 int _putstr(char *s);
 
-#endif
+#endif /*MAIN_H*/
