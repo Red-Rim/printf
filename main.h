@@ -21,5 +21,7 @@ int _putchar(char c);
 void _puts(char *str);
 int check_format(va_list list, const char *s);
 int _putstr(char *s);
+int computeDivisor(int num_digits);
+int getNumDigits(int num);
 
 #endif /*MAIN_H*/
