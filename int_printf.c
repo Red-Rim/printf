@@ -9,12 +9,12 @@
  */
 int _printf(const char *format, ...)
 {
-	int ama = 0;
+	int c = 0;
 	va_list args;
 
 	va_start(args, format);
 
-	while (*format)
+	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
@@ -23,24 +23,24 @@ int _printf(const char *format, ...)
 			{
 				int value = va_arg(args, int);
 
-				ama += printf("%d", value);
+				c += printf("%d", value);
 			}
 			else
 			{
 				putchar('%');
 				putchar(*format);
-				ama += 2;
+				c += 2;
 			}
 		}
 		else
 		{
 			putchar(*format);
-			ama++;
+			c++;
 		}
 		format++;
 	}
 
 	va_end(args);
 
-	return (ama);
+	return (c);
 }
