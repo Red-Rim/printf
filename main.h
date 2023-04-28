@@ -25,4 +25,4 @@ int computeDivisor(int num_digits);
 int getNumDigits(int num);
 int _printf_int(const char *format, ...);
 
-#endif /*MAIN_H*/
+#endif /*:)*/
