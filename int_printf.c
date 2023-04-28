@@ -3,11 +3,11 @@
 
 /*Red-Rim*/
 /**
- * _printf - a function that produces output according to a format
+ * _int_printf - a function that produces output according to a format
  * @format: pointer to a string of characters to be printed
  * Return: the number of characters, or 0 if an error occurs
  */
-int _printf(const char *format, ...)
+int _int_printf(const char *format, ...)
 {
 	int c = 0;
 	va_list args;

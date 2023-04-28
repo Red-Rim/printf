@@ -23,6 +23,6 @@ int check_format(va_list list, const char *s);
 int _putstr(char *s);
 int computeDivisor(int num_digits);
 int getNumDigits(int num);
-int _printf_int(const char *format, ...);
+int _int_printf(const char *format, ...);
 
 #endif /*:)*/
