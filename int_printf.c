@@ -3,7 +3,7 @@
 
 /*Red-Rim*/
 /**
- * _printf - formatted string to the standard output stream
+ * _printf - a function that produces output according to a format
  * @format: pointer to a string of characters to be printed
  * Return: the number of characters, or 0 if an error occurs
  */
@@ -14,21 +14,30 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 
-	while (*format != '\0')
+	while (*format)
 	{
 		if (*format == '%')
 		{
-			int value = va_arg(args, int);
-
-			ama += printf("%d", value);
 			format++;
+			if (*format == 'd' || *format == 'i')
+			{
+				int value = va_arg(args, int);
+
+				ama += printf("%d", value);
+			}
+			else
+			{
+				putchar('%');
+				putchar(*format);
+				ama += 2;
+			}
 		}
 		else
 		{
 			putchar(*format);
 			ama++;
-			format++;
 		}
+		format++;
 	}
 
 	va_end(args);
