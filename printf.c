@@ -1,4 +1,6 @@
 #include "main.h"
+#include <stdio.h>
+#include <stdarg.h>
 
 /*Red-Rim & Hasu-naj*/
 /**
@@ -11,7 +13,6 @@ int _printf(const char *format, ...)
 	va_list args;
 	int c = 0;
 
-
 	va_start(args, format);
 
 	while (*format)
@@ -19,22 +20,38 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
+
 			if (*format == 'c')
-				c += _putchar(va_arg(args, int));
+			{
+				int c = va_arg(args, int);
+
+				_putchar(c);
+				c++;
+			}
 			else if (*format == 's')
-				c += _putstr(va_arg(args, char *));
+			{
+				char *str = va_arg(args, char *);
+
+				while (*str)
+				{
+					_putchar(*str);
+					c++;
+					str++;
+				}
+			}
 			else if (*format == '%')
 			{
-				c += _putchar('%');
-			else
-				return (-1);
+				_putchar('%');
+				c++;
+			}
 		}
 		else
-			c += _putchar(*format);
+		{
+			_putchar(*format);
+			c++;
+		}
 		format++;
 	}
-
 	va_end(args);
-
 	return (c);
 }
