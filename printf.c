@@ -23,9 +23,9 @@ int _printf(const char *format, ...)
 
 			if (*format == 'c')
 			{
-				int ch = va_arg(args, int);
+				int c = va_arg(args, int);
 
-				_putchar(ch);
+				_putchar(c);
 				c++;
 			}
 			else if (*format == 's')
