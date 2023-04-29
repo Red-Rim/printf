@@ -28,22 +28,22 @@ int _printf(const char *format, ...)
 				_putchar(c);
 				c++;
 			}
-			else if (*format == 's')
-			{
-				char *str = va_arg(args, char *);
+		else if (*format == 's')
+		{
+			char *str = va_arg(args, char *);
 
-				while (*str)
-				{
-					_putchar(*str);
-					c++;
-					str++;
-				}
-			}
-			else if (*format == '%')
+			while (*str)
 			{
+				_putchar(*str);
+				c++;
+				str++;
+			}
+		}
+		else if (*format == '%')
+		{
 				_putchar('%');
 				c++;
-			}
+		}
 		}
 		else
 		{
