@@ -22,5 +22,6 @@ void _puts(char *str);
 int check_format(va_list list, const char *s);
 int _putstr(char *str);
 int _int_printf(const char *format, ...);
+int print_binary(unsigned int n);
 
 #endif /*:)*/
