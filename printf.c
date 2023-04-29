@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-/*Red-Rim & Hasu-naj*/
+/*Red-Rim*/
 /**
  * _printf - a function that produces output according to a format
  * @format: format
@@ -23,9 +23,9 @@ int _printf(const char *format, ...)
 
 			if (*format == 'c')
 			{
-				int c = va_arg(args, int);
+				int ch = va_arg(args, int);
 
-				_putchar(c);
+				_putchar(ch);
 				c++;
 			}
 			else if (*format == 's')
