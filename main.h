@@ -17,6 +17,7 @@
 
 /*---Prototypes---*/
 int _printf(const char *format, ...);
+int printf(const char *format, ...);
 int _putchar(char c);
 void _puts(char *str);
 int check_format(va_list list, const char *s);
