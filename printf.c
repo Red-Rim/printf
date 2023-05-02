@@ -40,10 +40,10 @@ int _printf(const char *format, ...)
 			}
 		}
 		else if (*format == '%')
-		{
+			{
 				_putchar('%');
 				c++;
-		}
+			}
 		}
 		else
 		{
