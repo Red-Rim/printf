@@ -8,60 +8,69 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int ama;
+	int i = 0, c = 0;
 
 	va_start(args, format);
-	ama = _cprintf(format, args);
+
+	for (i = 0; format != NULL && format[i] != '\0'; i++)
+	{
+		if (format[i] == '%')
+		{
+			switch (format[++i])
+			{
+			case 'c':
+				c += _putchar(va_arg(args, int));
+				break;
+
+			case 's':
+				{
+					char *str = va_arg(args, char *);
+					int j;
+
+					if (str == NULL)
+						str = "(null)";
+
+				for (j = 0; str[j] != '\0'; j++)
+					c += _putchar(str[j]);
+
+				break;
+			}
+			case '%':
+				c += _putchar('%');
+				break;
+
+			default:
+				c += _putchar('%');
+				c += _putchar(format[i]);
+				break;
+			}
+		}
+		else
+		{
+			c += _putchar(format[i]);
+		}
+
+	}
+
+
 	va_end(args);
 
-	return (ama);
+	return (c);
 }
 
+/*Red-Rim*/
 /**
- * _cprintf - prints a formatted string with a va_list
- * @format: format
- * @args: the va_list of arguments
+ * printf - a function that produces output according to a format
+ * @format: format string
  * Return: the characters printed
  */
-
-int _cprintf(const char *format, va_list args)
+int printf(const char *format, ...)
 {
-	int i, j, ama = 0;
+	va_list args;
+	int c;
 
-	char *str_arg;
-
-	for (i = 0; format[i]; i++)
-	{
-		if (format[i] != '%')
-		{
-			ama += _putchar(format([i]);
-					continue;
-					}
-
-					i++;
-					if (!format[i])
-					break;
-
-					switch (format[i])
-					{
-					case 'c':
-					ama += _putchar(va_arg(args, int));
-					break;
-					case 's':
-					str_arg = va_arg(args, char *);
-					if (!str_arg)
-					ama += _putstr("(null)");
-					else
-					ama += _putstr(str_arg);
-					break;
-					case '%':
-					ama += _putchar('%');
-					break;
-					default:
-					ama += _putchar('%');
-					ama += _putchar(format[i]);
-					break;
-					}
-	}
-	return (ama);
+	va_start(args, format);
+	c = _printf(format, args);
+	va_end(args);
+	return (c);
 }
