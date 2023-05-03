@@ -26,5 +26,5 @@ int _int_printf(const char *format, ...);
 int print_binary(unsigned int n);
 int rev_str(char *s);
 int _printf_reserved(const char *format, ...);
-
+int print_format(const char *format, va_list args);
 #endif /*:)*/

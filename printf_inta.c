@@ -4,16 +4,15 @@
 
 /*Red-Rim*/
 /**
- * _printf_inta - a function that produces output according to a format
+ * print_format - prints formatted output to the console
  * @format: format
+ * @args: the variable arguments list
  * Return: the character printed
  */
-int _printf_inta(const char *format, ...)
+int print_format(const char *format, va_list args)
 {
-	va_list args;
 	int c = 0;
 
-	va_start(args, format);
 	while (*format != '\0')
 	{
 		if (*format == '%')
@@ -27,6 +26,22 @@ int _printf_inta(const char *format, ...)
 						int num = va_arg(args, int);
 
 						printf("%d", num);
+						c++;
+						break;
+					}
+				case 's':
+					{
+						char *str = va_arg(args, char *);
+
+						printf("%s", str);
+						c++;
+						break;
+					}
+				case 'c':
+					{
+						char ch = va_arg(args, int);
+
+						_putchar(ch);
 						c++;
 						break;
 					}
@@ -51,6 +66,23 @@ int _printf_inta(const char *format, ...)
 		format++;
 	}
 
+	return (c);
+}
+
+/*Red-Rim*/
+/**
+ * _printf_inta - a function that produces output according to a format
+ * @format: format
+ * Return: the numb of characters printed
+ */
+int _printf_inta(const char *format, ...)
+{
+	va_list args;
+	int c;
+
+	va_start(args, format);
+	c = print_format(format, args);
 	va_end(args);
+
 	return (c);
 }
